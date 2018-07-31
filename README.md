@@ -303,12 +303,12 @@ that allows to filter through an array in order to create a new array that only 
 ```
   deleteItem = (index, e) => {
     this.setState((previousState) => (
-      {crimes: [...previousState.crimes.filter((crime, i) => i !== index )]
+      {crimes: previousState.crimes.filter((crime, i) => i !== index )
     }));
   }
 ```
 
 - Note here are some new things.  We are using the functional version of setState, so we can 
-use the previousState(what the state is before we update) and create a new array with all the crimes except the one we want.  the ```...``` is a spread operator and what that does is takes the new array we are creating and spreading (or adding) it to the crimes array. 
+use the previousState(what the state is before we update) and create a new array with all the crimes except the one we want. 
 
 ** Go ahead and test that out **
