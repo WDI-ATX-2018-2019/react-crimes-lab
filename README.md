@@ -15,7 +15,7 @@
 
 - But let's go ahead and set up our state
 
-```
+```javascript
   constructor(){
     super();
 
@@ -32,7 +32,7 @@
 - We'll create a function that makes a call to the cityOfChicago to fetch a bunch of crimes
 ##### Inside of the App Component
 
-```
+```javascript
   getCrimes = async () => {
 
     try {
@@ -57,7 +57,7 @@ is loaded, we should make the call in componentDidMount, otherwise we can make i
 
 - In this particular case we want to make the API call in componentDidMount because we want the data loaded when are app is loaded, we can perform this operation like the following 
 
-```
+```javascript
   componentDidMount(){
     this.getCrimes().then((data) => console.log(data,  ' crimes from chicago'));
   }
@@ -68,7 +68,7 @@ is loaded, we should make the call in componentDidMount, otherwise we can make i
 
 - Now lets work on adding the crimes we recieved from our API call to our state, we can now do the following 
 
-```
+```javascript
   componentDidMount(){
     this.getCrimes().then((data) => this.setState({crimes: data}));
   }
@@ -87,7 +87,7 @@ crimes list
  
 - Inside of the ```index.js``` file lets set up our functional component 
 
-```
+```javascript
 import React from 'react';
 
 
@@ -105,8 +105,8 @@ export default CrimesList;
 - Now that we set up the basic structure of our crimesList lets import this funcitonal component into our ```App.js``` component, and then render the component, our ```App.js``` should now look like the following.
 
 
-```
-mport React, { Component } from 'react';
+```javascript
+import React, { Component } from 'react';
 import './App.css';
 import CrimesList from './CrimesList';
 
@@ -151,7 +151,7 @@ export default App;
 
 - We have to pass the crimes as props of course, we can do that like the following 
 
-```
+```javascript
   render() {
     return (
       <div>
@@ -165,7 +165,7 @@ export default App;
 - Now lets make sure we our recieving the correct props in our CrimesList component 
 - we should have a property attached to ```props``` called crimes because that what we called the property in the ```App``` component above.  
 
-```
+```javascript
 const CrimesList = (props) => {
   console.log(props)
 
@@ -181,7 +181,7 @@ const CrimesList = (props) => {
 method attached to arrays to create a list of jsx elements that we can render to the page
 Remember we use map, because we our following a functional paridigm and we our not mutating our data, note map creates a brand new array (What we want).
 
-```
+```javascript
 const CrimesList = (props) => {
  
     const crimesList = props.crimes.map((crime, i) => {
@@ -208,7 +208,7 @@ const CrimesList = (props) => {
 
 - So first steps lets create a deleteCrime function in our ```App``` component, and pass it to our crimesList component like the following 
 
-```
+```javascript
  deleteItem = (e) => {
     console.log('delete button working')
 
@@ -224,7 +224,7 @@ const CrimesList = (props) => {
 
 -  Lets use the deleteItem function in our ```CrimesList``` component like the following 
 
-```
+```javascript
 import React from 'react';
 
 
@@ -256,7 +256,7 @@ export default CrimesList;
 -  What we can use is another functional programming method from vanilla javascript called ```.bind```
  -  ```.bind()```, allows us to pass a predifined argument to our function when its called, as well as set the context of this on the method call (note, we'll pretty much always use ```this``` fro the context)
 
-```
+```javascript
 import React from 'react';
 
 
@@ -284,7 +284,7 @@ export default CrimesList;
 - The above will pass the index number (```i```) to deleteItem when the function is called now, we can check to make sure this by doing the following in the deleteItem function in ```App.js```
 
 
-```
+```javascript
   deleteItem = (index, e) => {
     
     console.log(index, ' this is the index number')
@@ -300,7 +300,7 @@ that allows to filter through an array in order to create a new array that only 
 
 - We can filter our crimes like the following 
 
-```
+```javascript
   deleteItem = (index, e) => {
     this.setState((previousState) => (
       {crimes: previousState.crimes.filter((crime, i) => i !== index )
