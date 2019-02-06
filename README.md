@@ -245,7 +245,7 @@ export default CrimesList;
 ** Now we have to work on getting the index number of the crime to our deleteItem function in order to delete it out of our ```crimes``` array in our state.
 
 -  What we can use is another functional programming method from vanilla javascript called ```.bind```
- -  ```.bind()```, allows us to pass a predifined argument to our function when its called, as well as set the context of this on the method call (note, we'll pretty much always use ```this``` fro the context)
+ -  ```.bind()```, allows us to pass a predifined argument to our function when its called, as well as set the context of this on the method call (since we don't care about the context we can use null)
 
 ```javascript
 import React from 'react';
@@ -254,7 +254,7 @@ import React from 'react';
 const CrimesList = (props) => {
     
     const crimesList = props.crimes.map((crime, i) => {
-      return <li key={i}>{crime.description} <button onClick={deleteItem.bind(this, i)}>Delete</button></li>
+      return <li key={i}>{crime.description} <button onClick={deleteItem.bind(null, i)}>Delete</button></li>
     })
 
     return (
