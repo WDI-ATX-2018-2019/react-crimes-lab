@@ -38,7 +38,7 @@
     try {
       const crimes = await fetch('https://data.cityofchicago.org/resource/crimes.json');
       const crimesJson = await crimes.json();
-      return crimesJson;
+      this.setState({crimes: crimesJson});
     } catch (err) {
       console.log(err, 'error in catch block')
       return err
@@ -59,25 +59,12 @@ is loaded, we should make the call in componentDidMount, otherwise we can make i
 
 ```javascript
   componentDidMount(){
-    this.getCrimes().then((data) => console.log(data,  ' crimes from chicago'));
+    this.getCrimes()
   }
 
 ```
 
--  So in the above we are just making our API call to make sure we are recieving the data
-
-- Now lets work on adding the crimes we recieved from our API call to our state, we can now do the following 
-
-```javascript
-  componentDidMount(){
-    this.getCrimes().then((data) => this.setState({crimes: data}));
-  }
-
-```
-
-- Note since ```data``` is an array and we set our inital state of the ```crimes``` data as an array we can just set the data equal to our crimes array, and we won't have to worry about anything
-
-** So now that we know we have our data lets list it out **
+**So now that we know we have our data lets list it out**
 
 - It now makes sense to create a functional component in order to render our 
 crimes list 
