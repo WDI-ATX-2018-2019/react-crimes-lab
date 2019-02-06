@@ -37,6 +37,9 @@
 
     try {
       const crimes = await fetch('https://data.cityofchicago.org/resource/crimes.json');
+       if (!response.ok) {
+          throw Error(response.statusText);
+       }
       const crimesJson = await crimes.json();
       this.setState({crimes: crimesJson});
     } catch (err) {
@@ -49,6 +52,7 @@
 
 ```
 
+**Fetch does not reject the Promise in case of HTTP errors** That's why we need to add the check to reject the promise using throw
 
 ## Where to make API calls
 
