@@ -8,10 +8,10 @@
 3.  Create Functionality in which we can delete the crimes
 
 
-** Lets begin buy creating our react app **
+**Lets begin buy creating our react app**
 ```create-react-app react-ajax```
 
-** Next We'll leave our app component as our container component **
+**Next We'll leave our app component as our container component**
 
 - But let's go ahead and set up our state
 
@@ -37,7 +37,7 @@
 
     try {
       const crimes = await fetch('https://data.cityofchicago.org/resource/crimes.json');
-       if (!response.ok) {
+       if (!crimes.ok) {
           throw Error(response.statusText);
        }
       const crimesJson = await crimes.json();
