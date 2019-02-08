@@ -284,7 +284,7 @@ export default CrimesList;
 
 ```
 
-** Now go ahead and test that out **
+**Now go ahead and test that out**
 
 - Now that we have the index number, we can use another functional programming method, 
 that allows to filter through an array in order to create a new array that only contains the things we want, this method is called ```.filter```, note: this creates a brand new array
@@ -302,4 +302,4 @@ that allows to filter through an array in order to create a new array that only 
 - Note here are some new things.  We are using the functional version of setState, so we can 
 use the previousState(what the state is before we update) and create a new array with all the crimes except the one we want. 
 
-** Go ahead and test that out **
+**Go ahead and test that out**
